@@ -19,6 +19,9 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rulles: {
+      "react/no-unescaped-entities": "off"
+    }
   },
 ];
 
