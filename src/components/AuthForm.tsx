@@ -7,6 +7,9 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
+import { error } from 'console'
+import { toast } from 'sonner'
+import { loginAction, signupAction } from '@/actions/users'
 
 type Props = {
     type: "login" | "signup"
@@ -17,8 +20,36 @@ function AuthForm({type} : Props) {
     const router = useRouter()
     const [isPending,startTransition] = useTransition()
     const handleSubmit = async (formData : FormData) => {
-        console.log("Form submited");
         
+        startTransition(async () => {
+            const email = formData.get("email") as string
+            const password = formData.get("password") as string
+
+            let errorMessage;
+            let title;
+            let description;
+
+            if(isLoginForm){
+                errorMessage = (await loginAction(email,password)).errorMessage
+                title = "Logged in!"
+                description = "You have successfully logged in!"
+            } else {
+                errorMessage = (await signupAction(email,password)).errorMessage
+                title = "Signed up!"
+                description = "Check your email for confirmation link."
+            }
+
+            if(!errorMessage){
+                toast.success(title,{
+                    description
+                })
+                router.replace("/")
+            }else{
+                toast.error("Error",{
+                    description: errorMessage
+                })
+            }
+        })
     }
   return (
     <form action={handleSubmit}>
