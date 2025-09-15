@@ -22,7 +22,7 @@ function LogoutButton() {
                     label: "X",
                     onClick: () => console.log("Cancel")
                 }
-            })
+            }) 
             router.push('/')
         }else{
             toast.error("Error",{
