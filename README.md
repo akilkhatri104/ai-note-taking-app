@@ -1,6 +1,6 @@
 # AI Note Taking App
 
-A modern note-taking application enhanced with AI capabilities for smart organization and content generation. Access the live demo at [https://ai-note-taking-app.vercel.app](https://ai-note-taking-app.vercel.app)
+A modern note-taking application enhanced with AI capabilities for smart organization and content generation. Access the live demo at [https://ai-note-taking-app-rouge.vercel.app](https://ai-note-taking-app-rouge.vercel.app)
 
 ## Features
 
@@ -29,7 +29,7 @@ A modern note-taking application enhanced with AI capabilities for smart organiz
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/khatriakil104/ai-note-taking-app.git
+git clone https://github.com/akilkhatri104/ai-note-taking-app.git
 cd ai-note-taking-app
 ```
 
