@@ -5,6 +5,7 @@ import { Button } from "./ui/button"
 import DarkModeToggle from "./DarkModeToggle"
 import LogoutButton from "./LogoutButton"
 import { getUser } from "@/app/auth/server"
+import { SidebarTrigger } from "./ui/sidebar"
 
 async function Header() {
   const user = await getUser()
@@ -15,7 +16,8 @@ async function Header() {
         boxShadow: shadow
       }}
     >
-      <Link href={'/'} className="flex items-end gap-2 text-2xl font-semibold leading-6">
+      <SidebarTrigger className="absolute top-1 lef-1"/>
+      <Link href={'/'} className="ml-5 flex items-end gap-2 text-2xl font-semibold leading-6">
         <Image src={'/goatius.png'} alt="GOAT Notes Logo" height={60} width={60} className="rounded-full" priority />
         <h1 className="flex flex-col pb-1 ">
           GOAT <span>Notes</span>
