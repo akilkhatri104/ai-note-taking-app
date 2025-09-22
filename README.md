@@ -5,7 +5,7 @@ A modern note-taking application enhanced with AI capabilities for smart organiz
 ## Features
 
 - 📝 Rich text note creation and editing
-- 🤖 AI-powered note suggestions and content generation
+- 🤖 AI-powered note sumurization
 - 🔍 Full-text search across all notes using Fuse.js
 - 🌙 Dark/Light theme support
 - 🔐 Secure authentication via Supabase
@@ -29,7 +29,7 @@ A modern note-taking application enhanced with AI capabilities for smart organiz
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ai-note-taking-app.git
+git clone https://github.com/khatriakil104/ai-note-taking-app.git
 cd ai-note-taking-app
 ```
 
