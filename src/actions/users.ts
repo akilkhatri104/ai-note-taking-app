@@ -4,6 +4,10 @@ import { createClient } from "@/app/auth/server";
 import { prisma } from "@/db/prisma";
 import { handleError } from "@/lib/utils";
 
+type UserActionPayload = {
+  errorMessage ?: string | null
+}
+
 export async function loginAction(email: string, password: string) {
   try {
     const { auth } = await createClient();
@@ -17,7 +21,7 @@ export async function loginAction(email: string, password: string) {
 
     return { errorMessage: null };
   } catch (error) {
-    handleError(error);
+    return handleError(error);
   }
 }
 
@@ -46,11 +50,11 @@ export async function signupAction(email: string, password: string) {
 
     return { errorMessage: null };
   } catch (error) {
-    handleError(error);
+    return handleError(error);
   }
 }
 
-export async function logoutAction() {
+export async function logoutAction(): Promise<UserActionPayload> {
   try {
     const { auth } = await createClient();
 
@@ -60,6 +64,6 @@ export async function logoutAction() {
 
     return { errorMessage: null };
   } catch (error) {
-    handleError(error);
+    return handleError(error);
   }
 }

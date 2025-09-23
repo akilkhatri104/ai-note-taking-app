@@ -8,7 +8,7 @@ import { getUser } from "@/app/auth/server"
 import { SidebarTrigger } from "./ui/sidebar"
 
 async function Header() {
-  const user = await getUser()
+  const {user,errorMessage} = await getUser()
 
   return (
     <header className="relative flex h-24 w-full items-center justify-between bg-popover px-3 sm:px-8"

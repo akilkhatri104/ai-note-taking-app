@@ -1,5 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
+import { AuthError } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
+import { toast } from 'sonner'
 
 export async function createClient() {
   const cookieStore = await cookies()
@@ -31,14 +33,21 @@ export async function createClient() {
 }
 
 export async function getUser(){
-    const {auth} = await createClient()
-
-    const userObject = await auth.getUser()
-
-    if(userObject.error){
-        console.error(userObject.error)
-        return null
+    try {
+      const {auth} = await createClient()
+  
+      const userObject = await auth.getUser()
+  
+      if(userObject.error){
+          throw userObject.error
+      }
+  
+      return {
+        user:userObject.data.user
+      }
+    } catch (error: any) {
+      return {
+        errorMessage: error?.message
+      }
     }
-
-    return userObject.data.user
 }

@@ -83,7 +83,7 @@ function AskAIButton({ user }: Props) {
   }
 
   const handleKeyDown = (e : React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if(e.key == "Enter" && !e.shiftKey){
+    if(e.key == "Enter" && e.shiftKey){
       e.preventDefault()
       handleSubmit()
     }
@@ -96,7 +96,7 @@ function AskAIButton({ user }: Props) {
           Ask AI
         </Button>
       </DialogTrigger>
-      <DialogContent className='flex h-[85vh] max-w-4xl flex-col overflow-y-auto' ref={contentRef}>
+      <DialogContent className='flex h-[85vh]  flex-col overflow-y-auto' ref={contentRef}>
         <DialogHeader>
           <DialogTitle>Ask AI About Your Notes!</DialogTitle>
           <DialogDescription>
@@ -128,8 +128,8 @@ function AskAIButton({ user }: Props) {
         >
           <Textarea 
             ref={textAreaRef}
-            placeholder='Ask me anything about your notes...'
-            className='resize-none rounded-none border-none bg-transparent p-0 shadow-none placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0'
+            placeholder='Press Enter + Shift to submit'
+            className='resize-none rounded-none border-none sticky bottom-0 bg-transparent p-0 shadow-none placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0'
             style={{
               minHeight: "0",
               lineHeight: "normal"
@@ -140,7 +140,7 @@ function AskAIButton({ user }: Props) {
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
           />
-          <Button className='ml-auto size-8 rounded-full'>
+          <Button className='ml-auto size-8 rounded-full' onClick={handleSubmit} disabled={isPending}>
             <ArrowUpIcon className='text-background' />
           </Button>
         </div>

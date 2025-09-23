@@ -12,7 +12,7 @@ import Link from "next/link"
 import SidebarGroupContent from "./SidebarGroupContent"
 
 export async function AppSidebar() {
-    const user = await getUser()
+    const {user} = await getUser()
 
     let notes : Note[] = []
 

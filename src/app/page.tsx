@@ -11,7 +11,7 @@ type Props = {
 
 async function HomePage({searchParams} : Props) {
   const noteIdParam = (await searchParams).noteId
-  const user = await getUser()
+  const {user} = await getUser()
 
   const noteId = Array.isArray(noteIdParam) ? noteIdParam![0] : noteIdParam || ""
 
